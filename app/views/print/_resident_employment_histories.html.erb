@@ -1,0 +1,21 @@
+<% if !lease_resident.resident.resident_employment_histories.empty? %>
+  <h3>Employment History</h3>
+  <div>
+
+    <% lease_resident.resident.resident_employment_histories.each do | employment_history | %>
+      <div>
+        <div class="form-row">
+          <%=render partial: 'form_item', locals: {label: "Employment Status", value: label_lookup(employment_history.employment_status, ResidentEmploymentHistory::EMPLOYMENT_STATUS_OPTIONS).titleize} %>
+          <%=render partial: 'form_item', locals: {label: "Company Name", value: employment_history.company_name} %>
+          <%=render partial: 'form_item', locals: {label: "Employment Status", value: label_lookup(employment_history.months_at_company, ResidentEmploymentHistory::TIME_AT_OPTIONS)} %>
+        </div>
+
+        <div class="form-row">
+          <%=render partial: 'form_item', locals: {label: "Contact Name", value: employment_history.contact_name} %>
+          <%=render partial: 'form_item', locals: {label: "Contact Phone", value: employment_history.contact_phone} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<hr/>
+<% end %>

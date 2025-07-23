@@ -1,0 +1,3 @@
+class CommunicationNotePublic < Communication
+
+end

@@ -1,0 +1,56 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%=Rails.application.credentials.dig(:database, :host) %>
+  username: renter_insight
+  password: <%=Rails.application.credentials.dig(:database, :password) %>
+
+development:
+  primary:
+    <<: *default
+    database: renter_insight_development
+  logs:
+    <<: *default
+    database: renter_insight_development_logs
+    migrations_paths: db/logs_migrate
+
+test:
+  primary:
+    <<: *default
+    username: renter_insight_test
+    database: renter_insight_test
+  logs:
+    <<: *default
+    username: renter_insight_test
+    database: renter_insight_test_logs
+    migrations_paths: db/logs_migrate
+
+staging:
+  primary:
+    <<: *default
+    database: renter_insight_staging
+  logs:
+    <<: *default
+    database: renter_insight_staging_logs
+    migrations_paths: db/logs_migrate
+
+sandbox:
+  primary:
+    <<: *default
+    username: renter_insight_sandbox
+    database: renter_insight_sandbox
+  logs:
+    <<: *default
+    username: renter_insight_sandbox
+    database: renter_insight_sandbox_logs
+    migrations_paths: db/logs_migrate
+
+production:
+  primary:
+    <<: *default
+    database: renter_insight_production
+  logs:
+    <<: *default
+    database: renter_insight_production_logs
+    migrations_paths: db/logs_migrate

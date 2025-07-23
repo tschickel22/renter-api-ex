@@ -1,0 +1,18 @@
+<% if !lease_resident.resident.resident_contact_references.empty? %>
+  <h3>References</h3>
+  <p>We recommend providing at least 2 references.</p>
+  <div>
+
+    <% lease_resident.resident.resident_contact_references.each do | contact_reference | %>
+      <div>
+        <div class="form-row">
+          <%=render partial: 'form_item', locals: {label: "First Name", value: contact_reference.first_name} %>
+          <%=render partial: 'form_item', locals: {label: "Last Name", value: contact_reference.last_name} %>
+          <%=render partial: 'form_item', locals: {label: "Phone", value: contact_reference.phone_number} %>
+          <%=render partial: 'form_item', locals: {label: "Relationship", value: label_lookup(contact_reference.relationship_type, ResidentContactReference::RELATIONSHIP_TYPE_OPTIONS) } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<hr/>
+<% end %>

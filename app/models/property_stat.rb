@@ -1,0 +1,2 @@
+class PropertyStat < ApplicationRecord
+end

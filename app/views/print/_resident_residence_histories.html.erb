@@ -1,0 +1,33 @@
+<% if !lease_resident.resident.resident_residence_histories.empty? %>
+  <h3>Resident History</h3>
+  <div>
+
+    <% lease_resident.resident.resident_residence_histories.each do | residence_history | %>
+      <div>
+
+        <div class="form-row">
+          <%=render partial: 'form_item', locals: {label: "Country", value: (residence_history.country || '').titleize} %>
+          <%=render partial: 'form_item', locals: {label: "Time at Address", value: label_lookup(residence_history.months_at_address, ResidentEmploymentHistory::TIME_AT_OPTIONS) } %>
+          <%=render partial: 'form_item', locals: {label: "Type", value: label_lookup(residence_history.residence_type, ResidentResidenceHistory::RESIDENCE_TYPE_OPTIONS)} %>
+        </div>
+
+        <div class="form-row">
+          <%=render partial: 'form_item', locals: {label: "Address", value: residence_history.street} %>
+          <%=render partial: 'form_item', locals: {label: "City", value: residence_history.city} %>
+          <%=render partial: 'form_item', locals: {label: residence_history.country == 'international' ? "Region" : "State", value: residence_history.state} %>
+          <%=render partial: 'form_item', locals: {label: residence_history.country == 'international' ? "Postal Code" : "Zip", value: residence_history.zip} %>
+        </div>
+
+        <% if !residence_history.residence_type_not_rent? %>
+          <div class="form-row">
+            <%=render partial: 'form_item', locals: {label: "Landlord Name", value: residence_history.landlord_name} %>
+            <%=render partial: 'form_item', locals: {label: "Landlord Phone", value: residence_history.landlord_phone} %>
+            <%=render partial: 'form_item', locals: {label: "Landlord Email", value: residence_history.landlord_email} %>
+            <%=render partial: 'form_item', locals: {label: "Monthly Rent", value: number_to_currency(residence_history.monthly_rent, precision: 0)} %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<hr/>
+<% end %>

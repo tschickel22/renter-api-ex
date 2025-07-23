@@ -1,0 +1,15 @@
+<h1>Renter Insight</h1>
+<h2>Identity Verification Failed</h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>Your screening is not yet complete because you failed the Identity Verification Questions. Please contact TransUnion SmartMove Customer Service at 833-458-6338 to resolve this issue.</p>
+
+<p>Once the issue is resolved, the Landlord will be notified with the screening results.</p>
+
+<p>Transaction #: <%=@lease_resident.screening_request&.external_screening_id %><br/>
+Date Application Sent: <%=@lease_resident.invitation_sent_at_pretty %></p>
+
+<p>Thank you,<br>
+Renter Insight<br>
+<a href="mailto:support@renterinsight.com">support@renterinsight.com</a></p>

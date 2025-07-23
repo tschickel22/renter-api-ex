@@ -1,0 +1,11 @@
+<h1>Renter Insight</h1>
+<h2>New Maintenance Request</h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p><%=@maintenance_request.submitted_by.name %> has submitted a new maintenance request.</p>
+
+<%=render partial: 'company_mailer/maintenance_request_info' %>
+
+<p>Thank you,<br>
+Renter Insight</p>

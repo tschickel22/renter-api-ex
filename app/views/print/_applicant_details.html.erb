@@ -1,0 +1,19 @@
+<div className="section-table-wrap">
+  <div className="add-property-wrap">
+    <% if !@lease_resident.is_a?(LeaseResidentMinor) && !@lease.property.external_screening_id.blank? %>
+      <%=render partial: 'resident_screening_information', locals: {lease_resident: @lease_resident} %>
+      <hr/>
+    <% end %>
+
+
+    <%=render partial: 'resident_residence_histories', locals: {lease_resident: @lease_resident} %>
+    <%=render partial: 'resident_employment_histories', locals: {lease_resident: @lease_resident} %>
+    <%=render partial: 'resident_income_form', locals: {lease_resident: @lease_resident} %>
+    <%=render partial: 'resident_contact_emergencies', locals: {lease_resident: @lease_resident} %>
+    <%=render partial: 'resident_contact_references', locals: {lease_resident: @lease_resident} %>
+    <%=render partial: 'resident_identification', locals: {lease_resident: @lease_resident} %>
+    <%=render partial: 'resident_vehicles', locals: {lease_resident: @lease_resident} %>
+    <%=render partial: 'resident_pets', locals: {lease_resident: @lease_resident} %>
+
+  </div>
+</div>

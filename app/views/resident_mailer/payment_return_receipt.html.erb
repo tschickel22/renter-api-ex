@@ -1,0 +1,26 @@
+<h1>Renter Insight</h1>
+<h2>Payment for <%=@payment.lease.unit.street_and_unit %> Failed</h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>Your payment for <%=@payment.lease.unit.street_and_unit %> was returned for the following reason: "<%=@payment_return.return_reason %>".</p>
+<p>Please ensure you make a new payment within your resident portal, or contact our payment partner with any questions.</p>
+
+<% if @nsf_fee_charge.present? %>
+  <p>An NSF Fee of <%=number_to_currency(@nsf_fee_charge.amount, precision: 2) %>, has been added to your resident ledger.</p>
+<% end %>
+
+<% if @late_fee_charge.present? %>
+  <p>A late fee of <%=number_to_currency(@late_fee_charge.amount, precision: 2) %>, has been added to your resident ledger.</p>
+<% end %>
+
+<p>PayLease Payment Details</p>
+<p>Support: 1 (866) 729-5327</p>
+<p>
+  <strong>PayLease Transaction ID:</strong> <%=@payment.external_id %><br/>
+  <strong>Payment Date:</strong> <%=@payment.payment_at_pretty %><br>
+  <strong>Paid By:</strong> <%=@payment.payment_method.method_and_last_four %><br>
+  <strong>Amount:</strong> <%=number_to_currency(@payment.amount) %>
+</p>
+
+<%=render partial: 'signature', locals: {property: @payment.property} %>

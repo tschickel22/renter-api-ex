@@ -1,0 +1,16 @@
+<h1>Renter Insight</h1>
+<h2>Identity Verification Failed</h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p>The screening results for <%=@resident.full_name %> are not yet available due to your applicant failing the identity verification questions. Your applicant can contact TransUnion at 833-458-6338 to speak with a TransUnion representative to resolve this issue. Once the issue is resolved, you will be notified with the screening results.</p>
+
+<p>Instructions have also been provided to your applicant.</p>
+
+<p>Transaction #: <%=@lease_resident.screening_request&.external_screening_id %><br/>
+Date Application Sent: <%=@lease_resident.invitation_sent_at_pretty %></p>
+
+<%=link_to(raw("<span>View Application</span>"), "#{ApplicationMailer.base_url}/leases/#{@lease.hash_id}",  class: "btn btn-red") %><br/>
+
+<p>Thank you,<br>
+Renter Insight</p>

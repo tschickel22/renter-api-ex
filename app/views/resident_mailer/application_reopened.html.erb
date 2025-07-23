@@ -1,0 +1,8 @@
+<h1>Renter Insight</h1>
+<h2>Application Reopened</h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+<p>In order to continue your screening, your application has been reopened.  Use the link below to resume your application process for <%=@lease.property.name %>:</p>
+<div class="spacer"></div>
+<%=link_to(raw("<span>Resume Application</span>"), "#{ApplicationMailer.base_url}/portal/applications/#{@lease_resident.hash_id}/edit",  class: "btn btn-red btn-medium") %><br/>
+<%=render partial: 'signature', locals: {property: @lease.property} %>

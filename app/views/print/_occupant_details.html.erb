@@ -1,0 +1,33 @@
+<div class="section-table-wrap">
+  <div className="add-property-wrap">
+    <h3>Applicant Info</h3>
+    <%=render partial: 'print/resident_form_row', locals: {residentType: 'lease_resident', lease_resident: @lease_resident} %>
+  </div>
+  <hr/>
+
+  <% if @lease_resident.is_a?(LeaseResidentPrimary) && !@lease.minors.empty? %>
+    <h3>Minors</h3>
+    <p>Add individuals under the age of 18 who will live in the residence.</p>
+
+    <div>
+      <% @lease.minors.each do | minor | %>
+        <%=render partial: 'print/resident_form_row', locals: {residentType: 'minor', lease_resident: minor} %>
+      <% end %>
+    </div>
+
+    <hr/>
+  <% end %>
+
+  <% if @lease_resident.is_a?(LeaseResidentPrimary) && !@lease.guarantors.empty? %>
+    <h3>Guarantors (co-signers)</h3>
+    <p>Guarantors must be 18 years or older and must purchase and complete their own application, which will be submitted jointly along with the primary applicant. An separate invite will be sent to the guarantor.</p>
+
+    <div>
+      <% @lease.guarantors.each do | guarantor | %>
+        <%=render partial: 'print/resident_form_row', locals: {residentType: 'guarantor', lease_resident: guarantor} %>
+      <% end %>
+    </div>
+    <hr/>
+<% end %>
+</div>
+

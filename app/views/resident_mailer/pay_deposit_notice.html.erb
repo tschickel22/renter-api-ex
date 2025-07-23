@@ -1,0 +1,18 @@
+<h1>Renter Insight</h1>
+<h2>Security Deposit Request for <%=@charge.lease.unit.street_and_unit %></h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>Your property has requested you pay your security deposit for your new home at <%=@charge.lease.unit.street_and_unit %>.</p>
+
+<p>
+  <strong>Charge Type:</strong> <%=@charge.charge_type&.name %>
+  <%= ' - ' + @charge.description if !@charge.description.blank?  %><br>
+  <strong>Amount:</strong> <%=number_to_currency(@charge.amount) %><br>
+  <strong>Due On:</strong> Prior to Lease Signing
+
+</p>
+
+<%=link_to(raw("<span>View &amp; Pay</span>"), "#{ApplicationMailer.base_url}/portal/leases/#{@charge.lease.hash_id}/payments/#{@lease_resident.hash_id}/one_time",  class: "btn btn-red") %><br/>
+
+<%=render partial: 'signature', locals: {property: @charge.property} %>

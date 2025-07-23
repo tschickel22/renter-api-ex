@@ -1,0 +1,18 @@
+<% if !lease_resident.resident.resident_vehicles.empty? %>
+  <h3>Vehicles</h3>
+  <div>
+
+    <% lease_resident.resident.resident_vehicles.each do | vehicle | %>
+      <div>
+        <div class="form-row">
+          <%=render partial: 'form_item', locals: {label: "Make", value: vehicle.make} %>
+          <%=render partial: 'form_item', locals: {label: "Model", value: vehicle.model} %>
+          <%=render partial: 'form_item', locals: {label: "Year", value: vehicle.year} %>
+          <%=render partial: 'form_item', locals: {label: "Color", value: vehicle.color} %>
+          <%=render partial: 'form_item', locals: {label: "License Plate", value: vehicle.plate_number} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<hr/>
+<% end %>

@@ -1,0 +1,33 @@
+<% if !lease_resident.resident.id_type.blank? %>
+  <h3>Identification</h3>
+
+  <div>
+    <div class="form-row">
+      <%=render partial: 'form_item', locals: {label: "Identification Type", value: label_lookup(lease_resident.resident.id_type, Resident::ID_TYPE_OPTIONS) } %>
+      <%=render partial: 'form_item', locals: {label: lease_resident.resident.id_type == "passport" ? "Country Issued" : "State Issued", value: label_lookup(lease_resident.resident.id_issuer, ResidentContactEmergency::RELATIONSHIP_TYPE_OPTIONS) } %>
+      <%=render partial: 'form_item', locals: {label: "Identification #", value: lease_resident.resident.id_card_number} %>
+    </div>
+
+    <% if lease_resident.resident.identification_selfie.present? %>
+      <hr/>
+      <h3>Photo Holding Identification Next to Face</h3>
+      <div class="form-row">
+        <div class="form-item form-item-100">
+        <%= image_tag Rails.application.routes.url_helpers.url_for(lease_resident.resident.identification_selfie) %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if lease_resident.resident.identification_copy.present? %>
+      <hr/>
+      <h3>Copy of Identification</h3>
+      <div class="form-row">
+        <div class="form-item form-item-100">
+          <%= image_tag Rails.application.routes.url_helpers.url_for(lease_resident.resident.identification_copy) %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+  <hr/>
+<% end %>

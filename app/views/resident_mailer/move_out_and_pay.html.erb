@@ -1,0 +1,19 @@
+<h1>Renter Insight</h1>
+<h2>Final Move-Out Statement for <%=@lease.unit.street_and_unit %></h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>Thank you for living with us at <%=@lease.unit.street_and_unit %>, we wish you the best in the future.</p>
+
+<p>Here are your final move-out charges that are due upon receipt:</p>
+
+<p>
+  <strong>Charge Type:</strong> Move-Out<br>
+  <strong>Total Amount Due:</strong> <%=number_to_currency(@lease.ledger_balance) %><br>
+</p>
+
+<%=link_to(raw("<span>View &amp; Pay</span>"), "#{ApplicationMailer.base_url}/portal/leases/#{@lease.hash_id}/payments/#{@lease_resident.hash_id}/one_time",  class: "btn btn-red") %><br/>
+
+<p>If payments are not received in a timely manner, your account may be turned over to collections.</p>
+
+<%=render partial: 'signature', locals: {property: @lease.property} %>

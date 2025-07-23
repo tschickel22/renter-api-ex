@@ -1,0 +1,17 @@
+<h1>Renter Insight</h1>
+<h2>Your Lease Has Been Renewed at <%=@lease.unit.street_and_unit %></h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>We are happy you have decided to renew your lease, please find the details below.</p>
+
+<p>
+  <strong>Lease From:</strong> <%=@lease.lease_start_on.strftime('%m/%d/%Y') %><br>
+  <strong>Lease To:</strong> <%=@lease.lease_end_on&.strftime('%m/%d/%Y') %><br>
+  <strong>Monthly Rent:</strong> <%=number_to_currency(@lease.rent) %><br>
+  <strong>Monthly Charges:</strong> <%=number_to_currency(@lease.monthly_charges_amount) %><br>
+</p>
+
+<p>Please let us know if you have any questions.</p>
+
+<%=render partial: 'signature', locals: {property: @lease.property} %>

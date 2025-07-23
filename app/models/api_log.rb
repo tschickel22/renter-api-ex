@@ -1,0 +1,2 @@
+class ApiLog < LogsRecord
+end

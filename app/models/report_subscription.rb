@@ -1,0 +1,2 @@
+class ReportSubscription < ApplicationRecord
+end

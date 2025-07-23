@@ -1,0 +1,3 @@
+class CompanyLedgerItem < LedgerItem
+
+end

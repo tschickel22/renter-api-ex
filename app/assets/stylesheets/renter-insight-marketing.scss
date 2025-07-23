@@ -1,0 +1,199 @@
+@import 'mixins/renter-insight-mixins';
+$positive: #8CC66A;
+
+.plan-group-wrap {
+  @include flexbox;
+  justify-content: center;
+  gap:0 30px;
+  margin: 30px auto;
+  max-width: 820px;
+
+  @include max-medium {
+    gap:0 5px;
+    margin: 30px -15px;
+  }
+
+  .plan {
+    border:1px solid $gray_4;
+    background: #ffffff;
+    @include border-radius(10px);
+    padding: 0 0px 30px 0px;
+    flex:0 0 47%;
+    @include flexbox;
+    flex-flow:column nowrap;
+    justify-content: space-between;
+
+    .btn-medium {
+      @include max-small {
+        /* padding-left: 10px;
+        padding-right: 10px; */
+        transform: scale(0.8, 0.8);
+      }
+    }
+
+    .plan-name {
+      background: $gray_7;
+      padding: 15px;
+      border-bottom:1px solid $gray_4;
+      text-align: center;
+      font-size: 1.25em;
+      @include bold(reg);
+      color:$gray_1;
+      @include border-radius(10px 10px 0 0);
+
+      @include max-medium {
+        padding: 10px;
+      }
+    }
+
+    .pricing-info {
+      @include bold(reg);
+      text-align: center;
+      font-size: 1.1em;
+      margin: 15px auto;
+      color:$ri_red;
+
+      span {
+        @include reg(italic);
+        display: block;
+        color:$gray_1;
+        font-size: 0.95em;
+
+        @include max-medium {
+          margin: 0 5px;
+          font-size: 0.75em;
+        }
+      }
+    }
+
+    .pricing-includes {
+      @include sbold(reg);
+      text-align: center;
+      margin: 20px auto;
+
+      @include max-small {
+        margin: 20px 10px 10px 10px;
+      }
+    }
+
+    .plan-info {
+      margin: 0;
+      padding: 0 25px;
+      text-align: left;
+
+      @include max-medium {
+        padding: 0 15px;
+        font-size: 0.9em;
+      }
+
+      li {
+        list-style: none;
+        margin: 12px 0;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        @include max-medium {
+          /* margin: 10px 0; */
+        }
+
+        span {
+          display: block;
+          @include reg(italic);
+          margin-left: 23px;
+          font-size: 0.9em;
+          color:$gray_2;
+
+          @include max-small {
+            margin-left: 0;
+          }
+        }
+      }
+
+      i {
+        font-size: 1.1em;
+        color:$positive;
+        position: relative;
+        top: 1px;
+        margin-right: 7px;
+        line-height: 1;
+
+        @include max-medium {
+          font-size: 0.9em;
+        }
+
+        @include max-small {
+          display: none;
+        }
+      }
+    }
+  }
+}/* .plan-group-wrap */
+
+.pricing-everyplan {
+  /* background: rgba($positive, 0.25); */
+  background: #E9F7DC;
+  @include border-radius(30px);
+  @include flexvertcenter;
+  padding: 15px 30px;
+  width: fit-content;
+  gap:0 30px;
+  line-height: 1;
+  margin: auto;
+
+  @include max-large {
+    gap:0 20px;
+    font-size: 0.95em;
+  }
+
+  @include max-medium {
+    flex-flow:column nowrap;
+    line-height: 1.7;
+    @include border-radius(10px);
+    /* width: fit-content; */
+  }
+
+  strong {
+    color:$gray_1;
+  }
+
+  i {
+    font-size: 1.1em;
+    color:$positive;
+    position: relative;
+    top: 1px;
+    margin-right: 7px;
+    line-height: 1;
+  }
+
+  @include max-medium {
+
+  }
+
+}
+
+/* OVERRIDES */
+
+.plan-group-wrap {
+
+  @include max-medium {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  .plan {
+
+    @include max-medium {
+      margin-bottom: 20px;
+    }
+
+    .pricing-info.positive {
+      color: $positive;
+    }
+  }
+}
+
+.text-muted {
+  color: $gray_2;
+}

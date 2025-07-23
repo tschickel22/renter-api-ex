@@ -1,0 +1,13 @@
+<h1>Renter Insight</h1>
+<h2>Identity Verification Passed</h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>Good news! Your Identity Verification was manually completed and you may now continue with your screening.</p>
+
+<p>Please use the link below to sign in and continue:</p>
+
+<div class="spacer"></div>
+<%=link_to(raw("<span>Resume Screening</span>"), "#{ApplicationMailer.base_url}/portal/applications/#{@lease_resident.hash_id}/edit",  class: "btn btn-red btn-medium") %><br/>
+
+<%=render partial: 'signature', locals: {property: @lease.property} %>

@@ -1,0 +1,395 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="css/google-fonts.css" rel="stylesheet">
+
+  <style type="text/css" media="screen">
+
+      body, html {
+          font-family: "Source Sans Pro", sans-serif !important;
+          font-size: 16px;
+          margin: 0;
+          padding: 0 0px;
+      }
+
+      .header {
+          width: 100%;
+          margin: 0 0 40px 0;
+          border-bottom: 10px solid #F9F9F9;
+          padding: 20px 0px;
+          display: block;
+          text-align: center;
+      }
+
+      a, a:link {
+          color: #C44C3D;
+          text-decoration: underline;
+          font-weight: 700;
+          -webkit-transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      }
+
+      a:hover, .iconnav:hover {
+          cursor: pointer;
+          color: #AA3B2D;
+          -webkit-transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+          outline: none;
+      }
+
+
+      h1 {
+          color: #4C4C4C;
+          text-transform: uppercase;
+          font-family: "Source Sans Pro", sans-serif;
+          font-weight: 700;
+          font-style: normal;
+          font-size: 1.9em;
+      }
+
+      h2 {
+          text-transform: none;
+          font-family: "Source Sans Pro", sans-serif;
+          font-weight: 500;
+          font-style: normal;
+          font-size: 1.45em;
+          color: #4C4C4C;
+          /* margin-bottom: 30px; */
+      }
+
+      h3 {
+          text-transform: uppercase;
+          font-family: "Source Sans Pro", sans-serif;
+          font-weight: 600;
+          font-style: normal;
+          font-size: 1.1em;
+          color: #4C4C4C;
+      }
+
+      h1, h2 {
+          text-align: center;
+      }
+
+      p {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          font-size: 1em;
+          color: #838383;
+          line-height: 1.7;
+          text-align: justify;
+          padding: 0 15px;
+      }
+
+      .btn {
+          text-transform: uppercase;
+          text-decoration: none;
+          font-family: "Source Sans Pro", sans-serif;
+          font-weight: 600;
+          font-style: normal;
+          font-size: 1.1em;
+          padding: 0 15px;
+          height: 50px;
+          margin: auto;
+          /* height: 37px; */
+          line-height: 0;
+          display: block;
+          max-width: 200px;
+          /* Avoid Highlights */
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+      }
+      .btn span {
+          -webkit-transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: inherit;
+      }
+      @media (max-width: 576px) {
+          .btn span {
+              white-space: nowrap;
+          }
+      }
+      .btn:hover {
+          cursor: pointer;
+          -webkit-transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+      }
+      .btn i {
+          font-size: 1.25em;
+          line-height: 0;
+          margin-left: 10px;
+      }
+      .btn.btn-medium {
+          max-width: 300px;
+      }
+      .btn.btn-large {
+          max-width: 400px;
+      }
+
+      a.btn-red span {
+          color: #ffffff;
+          text-decoration: none;
+      }
+
+      .btn.btn-red, .btn-red, a.btn.btn-red {
+          text-decoration: none;
+          background: #C44C3D;
+          color: #ffffff;
+      }
+      .btn.btn-red:hover {
+          background: #AA3B2D;
+          color: #ffffff;
+      }
+      .btn.btn-gray, .btn.btn-gray-light, .btn-gray, .btn-gray-light, a.btn.btn-gray, a.btn.btn-gray-light {
+          background: #BCBCBC;
+          text-decoration: none;
+          color: #ffffff;
+          -webkit-transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+      }
+      .btn.btn-gray:hover, .btn.btn-gray-light:hover {
+          background: rgba(188, 188, 188, 0.6);
+          color: rgba(131, 131, 131, 0.6);
+      }
+      .btn.btn-gray.active, .btn.btn-gray-light.active {
+          /* background: $ri_red_dark; */
+          background: #C44C3D;
+          color: #ffffff;
+      }
+      .btn.btn-gray.btn-multichoice:hover, .btn.btn-gray.btn-multichoice.active, .btn.btn-gray-light.btn-multichoice:hover, .btn.btn-gray-light.btn-multichoice.active {
+          background: #C44C3D;
+          color: #ffffff;
+          cursor: pointer;
+          /* @include animate; */
+      }
+      .btn.btn-gray-light {
+          background: #E5E5E5;
+          color: #BCBCBC;
+          -webkit-transition: none;
+          -moz-transition: none;
+          -o-transition: none;
+          transition: none;
+      }
+      .btn.btn-gray-light:hover {
+          -webkit-transition: none;
+          -moz-transition: none;
+          -o-transition: none;
+          transition: none;
+      }
+
+      .text-left {
+          text-align: left;
+      }
+
+      .text-right {
+          text-align: right;
+      }
+
+      .text-center {
+          text-align: center;
+      }
+
+      .text-justify {
+          text-align: justify;
+      }
+
+      .logo {
+          width: 230px;
+          max-width: 230px;
+      }
+
+      .footer-logo {
+          width: 25px;
+          max-width: 25px;
+      }
+
+      .smallspacer {
+          height: 15px;
+      }
+
+      .spacer20 {
+          height: 20px;
+      }
+
+      .spacer {
+          height: 30px;
+      }
+
+      .main-wrapper {
+          width: 100%;
+          max-width: 700px;
+          padding:0 0;
+          margin: auto;
+          text-align: center;
+      }
+
+      .icon-phone {
+          width: 18px;
+          height: 18px;
+          margin-right: 4px;
+          position: relative;
+          top: 4px;
+      }
+
+      .footer {
+          width: 100%;
+          padding: 30px 0px 28px 0px;
+          background: #e5e5e5;
+          font-size: 0.7em;
+          color: #838383;
+          line-height: 1.2;
+          text-align: center;
+      }
+
+      .footer a {
+          font-weight: 400;
+          color: #838383;
+      }
+
+      .footer a:hover {
+          color: #C44C3D;
+      }
+
+      .footer-divider {
+          margin: 0 8px;
+      }
+
+      .positive {
+          color: $positive;
+      }
+
+      .negative {
+          color: $negative;
+      }
+
+      .summary {
+          text-align: left;
+          margin: 0;
+          padding: 0 15px;
+      }
+      .summary li {
+          padding: 5px 0;
+          list-style: none;
+      }
+      .summary li.summary-input {
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          justify-content: flex-start;
+      }
+      .summary li.summary-input .form-radio {
+          margin-left: 10px;
+      }
+      .summary li.summary-input .form-radio .input-radio {
+          margin-right: 0px;
+      }
+
+      .qr-code-wrap {
+          width: 100px;
+          line-height: 1;
+          margin: 10px auto;
+      }
+
+      .qr-code-wrap .qr-code {
+          width: 100%;
+      }
+
+      .qr-code-wrap span {
+          text-align: center;
+          display: block;
+          font-size: 0.8em;
+      }
+
+      .thumbnail-gallery {
+          gap:0px 4px;
+          padding: 0 0 0 4px;
+          flex-flow: row wrap;
+      }
+      .thumbnail-gallery  .thumb-wrap {
+            width: 100%;
+            max-width: calc(100% / 5 - 4px);
+            margin: 0;
+            padding: 0;
+
+        }
+      .thumbnail-gallery  .thumb-wrap img {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            max-width: 300px;
+        }
+
+  </style>
+
+</head>
+
+<body>
+<div class="main-wrapper" style="max-width:700px;">
+
+  <div class="header">
+    <a href="<%=ApplicationMailer.base_url %>" class="logo"><img src="<%=ApplicationMailer.base_url %>/images/renter-insight-logo.png" width="230" /></a>
+  </div>
+
+  <!-- CONTENT START -->
+  <%=yield %>
+  <!-- CONTENT END -->
+
+  <div class="spacer"></div>
+
+  <h2>Need Help?</h2>
+
+  <div class="spacer"></div>
+
+  <p style="text-align:center;"><img src="<%=ApplicationMailer.base_url %>/images/icon-phone.png" class="icon-phone" /> Call Support at 303-586-4420 or reply to this email</p>
+
+  <a href="<%=ApplicationMailer.base_url %>" class="logo footer-logo"><img src="<%=ApplicationMailer.base_url %>/images/renter-insight-logo-mark-2.png" width="25" /></a>
+
+  <div class="spacer"></div>
+
+  <div class="footer">
+    <div class="footer-info">This email was sent to you by Renter Insight.
+      <span class="footer-divider">|</span> <%=link_to "Unsubscribe", unsubscribe_url(e: Base64.encode64(message.to.first)) %> from future emails
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+
+

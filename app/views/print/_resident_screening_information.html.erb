@@ -1,0 +1,7 @@
+<h3>Identifying Information</h3>
+<p>In order to run our screening process, please provide the following:</p>
+
+<div class="form-row">
+  <%=render partial: 'form_item', locals: {label:"Social Security Number or ITIN", value: !lease_resident.resident.no_tax_id ? (!lease_resident.resident.tax_id.blank? ? "NNN-NN-#{lease_resident.resident.tax_id.slice(-4, 4)}" : "No SSN Provided") : "I don't have an SSN or ITIN" } %>
+  <%=render partial: 'form_item', locals: {label: "Date of Birth", value: !lease_resident.resident.date_of_birth.blank? ? lease_resident.resident.date_of_birth_on.strftime('mm/dd/%Y') : nil } %>
+</div>

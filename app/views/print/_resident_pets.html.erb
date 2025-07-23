@@ -1,0 +1,18 @@
+<% if !lease_resident.resident.resident_pets.empty? %>
+  <h3>Pets</h3>
+  <div>
+
+    <% lease_resident.resident.resident_pets.each do | pet | %>
+      <div>
+        <div class="form-row">
+          <%=render partial: 'form_item', locals: {label: "Pet type", value: label_lookup(pet.pet_type, ResidentPet::PET_TYPE_OPTIONS)} %>
+          <%=render partial: 'form_item', locals: {label: "Name", value: pet.name} %>
+          <%=render partial: 'form_item', locals: {label: "Breed", value: pet.breed} %>
+          <%=render partial: 'form_item', locals: {label: "Weight", value: pet.weight} %>
+          <%=render partial: 'form_item', locals: {label: "Color", value: pet.color} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<hr/>
+<% end %>

@@ -1,0 +1,18 @@
+<% if !lease_resident.resident.resident_contact_emergencies.empty? %>
+  <h3>Emergency Contacts</h3>
+  <p>We recommend providing at least 2 emergency contacts.</p>
+  <div>
+
+    <% lease_resident.resident.resident_contact_emergencies.each do | contact_emergency | %>
+      <div>
+        <div class="form-row">
+          <%=render partial: 'form_item', locals: {label: "First Name", value: contact_emergency.first_name} %>
+          <%=render partial: 'form_item', locals: {label: "Last Name", value: contact_emergency.last_name} %>
+          <%=render partial: 'form_item', locals: {label: "Phone", value: contact_emergency.phone_number} %>
+          <%=render partial: 'form_item', locals: {label: "Relationship", value: label_lookup(contact_emergency.relationship_type, ResidentContactEmergency::RELATIONSHIP_TYPE_OPTIONS) } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<hr/>
+<% end %>

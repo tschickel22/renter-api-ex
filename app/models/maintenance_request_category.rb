@@ -1,0 +1,5 @@
+class MaintenanceRequestCategory < Item
+
+end
+
+

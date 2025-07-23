@@ -1,0 +1,19 @@
+<h1>Renter Insight</h1>
+<h2>Resident Portal Access</h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>Your property manager has given you access to the Renter Insight resident portal.  The resident portal allows you to do many tasks including:</p>
+
+<ul>
+  <li style="text-align: left">View Account Balance</li>
+  <li style="text-align: left">Set up one time or recurring rent payments</li>
+  <li style="text-align: left">Submit maintenance requests</li>
+  <li style="text-align: left">Communicate with your property</li>
+</ul>
+
+<%=link_to(raw("<span>Access Resident Portal</span>"), "#{ApplicationMailer.base_url}/portal/invite/#{@lease_resident.hash_id}",  class: "btn btn-large btn-red") %><br/>
+
+<p><em>Do not reply to this email as it's not monitored.  Please use Resident Portal to Communicate with property.</em></p>
+
+<%=render partial: 'signature', locals: {property: @lease.property} %>

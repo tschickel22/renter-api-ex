@@ -1,0 +1,18 @@
+<h1>Renter Insight</h1>
+<h2>Move-Out Notice</h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p><%=@resident.full_name %> has submitted their notice to move-out on <%=@lease.notice_given_on.strftime('%m/%d/%Y') %>.</p>
+
+<% if false %>
+  <p>Note from resident:</p>
+  <%=note %>
+<% end %>
+
+<p>You may complete this Move-Out in Lease Detail after your resident has moved out.</p>
+
+<%=link_to(raw("<span>Lease Detail</span>"), "#{ApplicationMailer.base_url}/leases/#{@lease.hash_id}/move_out_renew",  class: "btn btn-red") %><br/>
+
+<p>Thank you,<br>
+Renter Insight</p>

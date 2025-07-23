@@ -1,0 +1,15 @@
+development:
+  adapter: async
+
+test:
+  adapter: test
+
+staging:
+  adapter: redis
+  url: <%= "redis://#{Rails.application.credentials.dig(:redis_endpoint)}" %>
+  channel_prefix: renter_insight_staging
+
+production:
+  adapter: redis
+  url: <%= "redis://#{Rails.application.credentials.dig(:redis_endpoint)}" %>
+  channel_prefix: renter_insight_production

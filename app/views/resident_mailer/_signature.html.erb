@@ -1,0 +1,25 @@
+<%
+  if defined?(company)
+    company_id = company.id
+    name = company.name
+  else
+    company_id = nil
+    name = "Renter Insight"
+  end
+
+  if defined?(property) && property.present?
+    company_id = property.company_id
+    property_id = property.id
+    name = property.name
+  else
+    property_id = nil
+  end
+
+  current_settings = Setting.for_property(company_id, property_id)
+%>
+
+<% if !current_settings.email_signature.blank? %>
+<p><%=raw(current_settings.email_signature.gsub("\n", "<BR/>")) %></p>
+<% else %>
+<p>Thank you,<br><%=name %></p>
+<% end %>

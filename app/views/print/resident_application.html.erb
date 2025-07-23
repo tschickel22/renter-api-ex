@@ -1,0 +1,12 @@
+<div class="section" style="margin: 0 auto">
+  <img src="<%=SystemMailer.base_url %>/images/renter-insight-logo.png" style="width: 200px; margin: 40px auto;">
+  <% if @lease_resident.present? %>
+    <div>
+      <h1><%=@lease.property.name %> - <%=@lease.unit&.street_and_unit %></h1>
+    </div>
+    <%=render partial:'occupant_details' %>
+    <%=render partial:'applicant_details' %>
+  <% else %>
+    No application found.
+  <% end %>
+</div>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <title>Renter Insight</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-itunes-app" content="app-id=6736842763, app-argument=https://apple.co/3NVVEbP">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PK75WK82');</script>
+    <!-- End Google Tag Manager -->
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Font Awesome -->
+    <link href="/font-awesome/css/all.css" rel="stylesheet"> <!--load all styles -->
+
+    <%= javascript_pack_tag 'landlord_react' if params[:controller] == "dashboard" %>
+    <%= javascript_pack_tag 'resident_react' if params[:controller] == "portal" %>
+
+    <% if defined?(@unit_listing) && @unit_listing.present?
+         first_unit_listing_photo = @unit_listing.first_unit_listing_photo()
+    %>
+      <%=content_tag(:meta, nil, {property: "og:url", content: "#{SystemMailer.base_url}/available-to-rent/#{@unit_listing.unit.url_stub}/#{@unit_listing.hash_id}"}) %>
+      <%=content_tag(:meta, nil, {property: "og:type", content: "website"}) %>
+      <%=content_tag(:meta, nil, {property: "og:site_name", content: "Renter Insight"}) %>
+      <%=content_tag(:meta, nil, {property: "og:title", content: @unit_listing.metadata_title}) %>
+      <%=content_tag(:meta, nil, {property: "og:description", content: @unit_listing.metadata_description}) %>
+      <%=content_tag(:meta, nil, {name: "twitter:title", content: @unit_listing.metadata_title}) %>
+      <%=content_tag(:meta, nil, {name: "twitter:description", content: @unit_listing.metadata_description}) %>
+
+      <% if first_unit_listing_photo.present? %>
+        <%=content_tag(:meta, nil, {property: "og:image", content: Rails.application.routes.url_helpers.url_for(first_unit_listing_photo)}) %>
+        <%=content_tag(:meta, nil, {name: "twitter:image", content: Rails.application.routes.url_helpers.url_for(first_unit_listing_photo)}) %>
+        <%=content_tag(:meta, nil, {name: "twitter:card", content: 'summary_large_image'}) %>
+      <% end %>
+
+    <% end %>
+
+  </head>
+  <body>
+    <%= yield %>
+    <%=render partial: 'shared/analytics' %>
+  </body>
+</html>
+
+

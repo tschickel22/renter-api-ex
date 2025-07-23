@@ -1,0 +1,8 @@
+<h1>Renter Insight</h1>
+<h2>Begin Application</h2>
+
+<p style="text-align:justify;">Dear <%=@resident.first_name %>,</p>
+<p style="text-align:justify;">Use the link below to begin your application process for <%=@lease.property.name %>:</p>
+<div class="spacer"></div>
+<%=link_to(raw("<span>Begin Application</span>"), "#{ApplicationMailer.base_url}/portal/invite/#{@lease_resident.hash_id}",  class: "btn btn-red") %><br/>
+<%=render partial: 'signature', locals: {property: @lease.property} %>

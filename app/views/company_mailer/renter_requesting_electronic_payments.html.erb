@@ -1,0 +1,15 @@
+<h1>Renter Insight</h1>
+<h2>Requesting Online Rent Payments</h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p>Your resident, <%=@resident.full_name %>, would like access to pay their rent electronically with credit card or ACH and you have not activated this feature yet.</p>
+
+<p>There is no cost to you to accept credit card or electronic checks.</p>
+
+<%=link_to(raw("<span>Activate Electronic Payments</span>"), "#{ApplicationMailer.base_url}/onboarding/payments",  class: "btn btn-large btn-red") %><br/>
+
+<p>Once you have activated electronic payments, we will notify your residents who are active in the Resident Portal.</p>
+
+<p>Thank you,<br>
+Renter Insight</p>

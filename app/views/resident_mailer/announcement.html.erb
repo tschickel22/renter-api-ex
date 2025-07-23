@@ -1,0 +1,3 @@
+<p><%=raw(@communication.body.gsub("\n", "<br>")) %></p>
+
+<%=render partial: 'signature', locals: {company: @communication.company, property: @communication.property} %>

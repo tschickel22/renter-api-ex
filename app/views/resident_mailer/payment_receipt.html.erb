@@ -1,0 +1,19 @@
+<h1>Renter Insight</h1>
+<h2>Payment for <%=@payment.lease.unit.street_and_unit %></h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>This is your payment receipt for <%=@payment.lease.unit.street_and_unit %>.</p>
+
+<p>
+  <strong>Receipt ID:</strong> <%=@payment.hash_id %><br>
+  <strong>Payment Date:</strong> <%=@payment.payment_at_pretty %><br>
+  <strong>Paid By:</strong> <%=@payment.payment_method.method_and_last_four %><br>
+  <strong>Amount:</strong> <%=number_to_currency(@payment.amount) %>
+  <% if @payment.fee_responsibility == Payment::RESPONSIBILITY_RESIDENT %>
+    <br>
+    <strong>Payment Processing Fee:</strong> <%=number_to_currency(@payment.fee) %>
+  <% end %>
+</p>
+
+<%=render partial: 'signature', locals: {property: @payment.property} %>

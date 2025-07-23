@@ -1,0 +1,18 @@
+<% if !lease_resident.resident.income.nil? %>
+  <h3>Income</h3>
+  <p>Enter your gross income (before taxes).  Include all sources such as wages, tips, social security, government subsidies and vouchers.  If your income is flexible, enter an average annual amount.  If you are applying with others, enter only your own income.</p>
+
+  <div class="form-row">
+    <%=render partial: 'form_item', locals: {label: "Annual Income", value: number_to_currency(lease_resident.resident.income, precision: 0)} %>
+    <%=render partial: 'form_item', locals: {label: "Notes", value: lease_resident.resident.income_notes} %>
+  </div>
+  <% if !lease_resident.resident.income_proofs.nil? && !lease_resident.resident.income_proofs.empty? %>
+    <div>
+      <h3>Income Proof Uploads</h3>
+      <% lease_resident.resident.income_proofs.each do | income_proof | %>
+        <%=link_to income_proof.filename, url_for(income_proof) %><br>
+      <% end %>
+    </div>
+  <% end %>
+<hr/>
+<% end %>

@@ -1,0 +1,111 @@
+ProcessLeaseChanges:
+  cron: "00 00 * * * US/Mountain"
+  class: ProcessLeaseChanges
+  queue: billing
+
+RunRecurringPayments:
+  cron: "01 00 * * * US/Mountain"
+  class: RunRecurringPayments
+  queue: billing
+
+UpdateBankTransactions:
+  cron: "01 03 * * * US/Mountain"
+  class: UpdateBankTransactions
+  queue: banking
+
+UpdateScreeningStatuses:
+  cron: "*/5 * * * * US/Mountain"
+  class: UpdateScreeningStatuses
+  queue: screening_reports
+
+GenerateCreditBuilderEnrollment:
+  cron: "30 08 10 * * US/Mountain"
+  class: GenerateCreditBuilderEnrollment
+  queue: screening_reports
+
+GenerateCreditBuilderActivity6:
+  cron: "45 08 06 * * US/Mountain"
+  class: GenerateCreditBuilderActivity
+  queue: screening_reports
+  env: production
+
+GenerateCreditBuilderActivity20:
+  cron: "45 08 20 * * US/Mountain"
+  class: GenerateCreditBuilderActivity
+  queue: screening_reports
+  env: production
+
+UpdateAchPaymentStatuses:
+  cron: "50 00 * * * US/Mountain"
+  class: UpdateAchPaymentStatuses
+  queue: billing
+
+PushCompanyToCrm:
+  cron: "00 01 * * * US/Mountain"
+  class: PushCompanyToCrm
+  queue: crm
+
+PushPropertyToCrm:
+  cron: "01 01 * * * US/Mountain"
+  class: PushPropertyToCrm
+  queue: crm
+
+PushUserToCrm:
+  cron: "02 01 * * * US/Mountain"
+  class: PushUserToCrm
+  queue: crm
+
+PushInvoiceToCrm:
+  cron: "03 01 * * * US/Mountain"
+  class: PushInvoiceToCrm
+  queue: crm
+
+ApplyLateFees:
+  cron: "11 00 * * * US/Mountain"
+  class: ApplyLateFees
+  queue: billing
+
+SendReminderEmailsEarly:
+  cron: "00 09 25 * * US/Mountain"
+  class: SendReminderEmails
+  args: advance_notice
+  queue: billing
+
+GenerateInvoices:
+  cron: "00 09 25 * * US/Mountain"
+  class: GenerateInvoices
+  queue: billing
+
+SendReminderEmailsOnFirst:
+  cron: "00 09 01 * * US/Mountain"
+  class: SendReminderEmails
+  args: first_of_month_notice
+  queue: billing
+
+SendReminderEmailsOnTime:
+  cron: "00 09 15 * * US/Mountain"
+  class: SendReminderEmails
+  args: on_time_notice
+  queue: billing
+
+#SendReminderEmailsLate:
+#  cron: "15 00 05 * * US/Mountain"
+#  class: SendReminderEmails
+#  args: late_notice
+#  queue: billing
+
+PopulatePropertyStats:
+  cron: "00 * * * *"
+  class: PopulatePropertyStats
+  queue: reporting
+
+DeliverAnnouncement:
+  cron: "*/15 * * * * US/Mountain"
+  class: DeliverAnnouncement
+  queue: announcements_populate
+
+
+BillEnvelopeChargesForTheDay:
+  cron: "59 23 * * * US/Mountain"
+  class: BillEnvelopeChargesForTheDay
+  queue: billing

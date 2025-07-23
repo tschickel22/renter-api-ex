@@ -1,0 +1,104 @@
+<%
+  if !defined?(hide_buttons)
+    hide_buttons = false
+  end
+
+  if !defined?(hide_qr_code)
+    hide_qr_code = false
+  end
+
+%>
+<h2>Ticket #<%=@maintenance_request.id %> for <strong><%=@maintenance_request.property.name %>, <%=@maintenance_request.unit.street_and_unit %></strong></h2>
+<div class="info-status-wrap">
+  <div class="info-status">Status: <span class="info-positive"><%=@maintenance_request.status_pretty %></span></div>
+</div>
+<p>
+  The ticket below was submitted on <em><%=@maintenance_request.submitted_on.strftime("%m/%d/%y") if @maintenance_request.submitted_on.present? %></em>
+  by <%=@maintenance_request.submitted_by.name %>.
+</p>
+
+<ul class="summary">
+  <% if !@maintenance_request.urgency.blank? %>
+    <li><strong>Urgency:</strong> <span class="<%=@maintenance_request.urgency == MaintenanceRequest::URGENCY_URGENT ? "negative" : "" %>"><%=@maintenance_request.urgency_pretty %></span></li>
+  <% end %>
+  <% if @maintenance_request.assigned_to.present? %>
+    <li>
+      <strong>Assigned To:</strong>
+      <%=@maintenance_request.assigned_to.name %>
+    </li>
+  <% end %>
+
+  <% if @maintenance_request.lease.present? %>
+    <% if @maintenance_request.lease.primary_resident.present? && @maintenance_request.lease.primary_resident.resident.present? %>
+      <li><strong>Primary Resident:</strong> <%=@maintenance_request.lease.primary_resident.resident.full_name %></li>
+      <li><strong>Primary Resident Phone:</strong> <%=@maintenance_request.lease.primary_resident.resident.phone_number %></li>
+    <% end %>
+
+    <% if !@maintenance_request.lease.secondary_residents.empty? %>
+      <li><strong>Other Residents:</strong> <%=  @maintenance_request.lease.secondary_residents.collect { |sr| sr.resident }.reject(&:nil?).collect{|r| r.full_name}.join(", ") %></li>
+    <% end %>
+  <% end %>
+
+  <% if @maintenance_request.unit.present? %>
+    <li><strong>Location:</strong> <%=@maintenance_request.property.name %>, <%=@maintenance_request.unit.full_address %></li>
+  <% end %>
+  <li><strong>Issue Description:</strong> <%=@maintenance_request.title %> <%=" - " + @maintenance_request.description if !@maintenance_request.description.blank? %></li>
+  <% if @maintenance_request.maintenance_request_category.present? %>
+    <li><strong>Category:</strong> <%=@maintenance_request.maintenance_request_category.name %></li>
+  <% end %>
+  <% if @maintenance_request.preferred_resolution_on.present? %>
+    <li>
+      <strong>Preferred Day to Resolve:</strong> <%=@maintenance_request.preferred_resolution_on.strftime('%A, %B %d, %Y') %>
+      <% if !@maintenance_request.preferred_resolution_time.blank? %>
+        between <%=label_lookup(@maintenance_request.preferred_resolution_time, MaintenanceRequest::RESOLUTION_TIME_OPTIONS) %>
+      <% end %>
+    </li>
+  <% end %>
+
+  <% if @maintenance_request.scheduled_on.present? %>
+    <li><strong>Schedule Day:</strong> <%=@maintenance_request.scheduled_on.strftime('%A, %B %d, %Y') %></li>
+    <% if !@maintenance_request.scheduled_time.blank? %>
+      between <%=label_lookup(@maintenance_request.scheduled_time, MaintenanceRequest::RESOLUTION_TIME_OPTIONS) %>
+    <% end %>
+  <% end %>
+
+  <li><strong>Permission to Enter:</strong> <%=@maintenance_request.permission_to_enter ? "Yes" : "No" %></li>
+  <li><strong>Pets in Unit:</strong> <%=@maintenance_request.pets_in_unit ? "Yes" : "No" %></li>
+  <% if @maintenance_request.pets_in_unit %>
+    <li><strong>Pet Description:</strong> <%=@maintenance_request.pet_description %></li>
+  <% end %>
+</ul>
+
+<div class="spacer"></div>
+<% if !hide_qr_code && (@user.nil? || !@user.is_resident?) %>
+  <div class="qr-code-wrap">
+    <img class="qr-code" src="<%=SystemMailer.base_url %>/mr/<%=@maintenance_request.hash_id %>/qr_code" />
+    <span>Scan to Edit or Close Ticket</span>
+  </div>
+<% end %>
+
+<% if @maintenance_request.photos.count > 0 %>
+  <strong>Photos Submitted</strong>
+  <div class="smallspacer"></div>
+  <div class="thumbnail-gallery">
+    <% @maintenance_request.photos.each do | photo | %>
+      <div class="thumb-wrap"><img src="<%= Rails.application.routes.url_helpers.url_for(photo) %>" /></div>
+    <% end %>
+  </div>
+  <div class="smallspacer"></div>
+<% end %>
+
+<% if !hide_buttons %>
+
+  <div class="form-nav">
+  <% if action_name == "maintenance_request_assigned" && @maintenance_request.assigned_to.is_a?(Vendor) %>
+      <%=link_to(raw("<span>View</span>"), "#{ApplicationMailer.base_url}/mr/#{@maintenance_request.hash_id}",  class: "btn btn-red") %><br/>
+  <% else %>
+    <% if @maintenance_request.status == MaintenanceRequest::STATUS_VENDOR_COMPLETE %>
+      <%=link_to(raw("<span>View/Close Ticket</span>"), "#{ApplicationMailer.base_url}/maintenance_requests/#{@maintenance_request.hash_id}/edit",  class: "btn btn-red") %><br/>
+    <% else %>
+      <%=link_to(raw("<span>View/Edit</span>"), "#{ApplicationMailer.base_url}/maintenance_requests/#{@maintenance_request.hash_id}/edit",  class: "btn btn-gray") %><br/>
+    <% end %>
+  <% end %>
+</div>
+<% end %>

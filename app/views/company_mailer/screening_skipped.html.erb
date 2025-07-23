@@ -1,0 +1,14 @@
+<h1>Renter Insight</h1>
+<h2>Application Complete</h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p>The application is complete for <%=@resident.full_name %>. No screening results are available because the applicant indicated they didn't have a Social Security Number (SSN). An SSN is required to access screening reports.</p>
+
+<p>Date Application Sent: <%=@lease_resident.invitation_sent_at_pretty %><br/>
+Date Completed: <%=@lease_resident.application_completed_at_pretty %></p>
+
+<%=link_to(raw("<span>View Application</span>"), "#{ApplicationMailer.base_url}/leases/#{@lease.hash_id}",  class: "btn btn-red") %><br/>
+
+<p>Thank you,<br>
+Renter Insight</p>

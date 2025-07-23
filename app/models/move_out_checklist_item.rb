@@ -1,0 +1,4 @@
+class MoveOutChecklistItem < Item
+
+end
+

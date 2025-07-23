@@ -1,0 +1,23 @@
+<h1>Renter Insight</h1>
+<h2>Final Move-Out Statement for <%=@lease.unit.street_and_unit %></h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>Thank you for living with us at <%=@lease.unit.street_and_unit %>, we wish you the best in the future.</p>
+
+<p>Here are your final move-out charges and security deposit details.</p>
+
+<p>
+  <strong>Charge Type:</strong> Move-Out<br>
+  <strong>Total Amount Due to You:</strong> <%=number_to_currency(@lease.security_deposit_refund_amount) %><br>
+</p>
+
+<% if @lease.security_deposit_refund_mode == Lease::REFUND_MODE_PAPER_CHECK_PRINTED || @lease.security_deposit_refund_mode == Lease::REFUND_MODE_PAPER_CHECK_HANDWRITTEN %>
+  <p>We will mail you a paper check in the amount of <%=number_to_currency(@lease.security_deposit_refund_amount) %>.</p>
+<% elsif @lease.security_deposit_refund_mode == Lease::REFUND_MODE_ACH %>
+  <p>We have submitted an ACH transfer to <%=@lease.security_deposit_refund_payment_method.nickname %> in the amount of <%=number_to_currency(@lease.security_deposit_refund_amount) %>.</p>
+<% end  %>
+
+<%=link_to(raw("<span>View Final Account Statement</span>"), "#{ApplicationMailer.base_url}/portal/leases/#{@lease.hash_id}/ledger",  class: "btn btn-large btn-red") %><br/>
+
+<%=render partial: 'signature', locals: {property: @lease.property} %>

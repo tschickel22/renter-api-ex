@@ -1,0 +1,22 @@
+<h1>Renter Insight</h1>
+<h2>Lease Renewal Request</h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p>You have a lease that expires in 60 days.  If the resident is not moving out, please ensure you Renew the Lease from the Resident Detail Page prior to lease expiration.</p>
+
+<p>Renter Insight will NOT charge residents once the lease expires and resident auto payments will cease.</p>
+
+<p>
+  <strong>Primary Resident:</strong> <%=@resident.full_name %><br>
+  <strong>Lease From:</strong> <%=@lease.lease_start_on.strftime('%m/%d/%Y') %><br>
+  <strong>Lease To:</strong> <%=@lease.lease_end_on.strftime('%m/%d/%Y') %><br>
+  <strong>Monthly Rent:</strong> <%=number_to_currency(@lease.rent) %><br>
+</p>
+
+<p>Please let us know if you have any questions.</p>
+
+<%=link_to(raw("<span>View Lease</span>"), "#{ApplicationMailer.base_url}/leases/#{@lease.hash_id}",  class: "btn btn-red") %><br/>
+
+<p>Thank you,<br>
+Renter Insight</p>

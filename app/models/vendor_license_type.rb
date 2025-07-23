@@ -1,0 +1,4 @@
+class VendorLicenseType < Item
+
+end
+

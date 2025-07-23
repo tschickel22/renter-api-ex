@@ -1,0 +1,20 @@
+<h1>Renter Insight</h1>
+<h2>Renter Insight Property Software User Created</h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p>We have created an account for you to access Renter Insight Property Management Software.</p>
+
+<p>Access Renter Insight at <a href="<%=ApplicationMailer.base_url %>"><%=ApplicationMailer.base_url %></a></p>
+
+<p>
+  <strong>Email:</strong> <%=@user.email %><br>
+</p>
+
+<p>Click on the Access Renter Insight button to set your password:</p>
+
+<%=link_to(raw("<span>Access Renter Insight</span>"), "#{ApplicationMailer.base_url}/users/password/edit?reset_password_token=#{@token}",  class: "btn btn-red btn-medium") %><br/>
+
+<p>You can access training and help articles in our <a href="https://helpcenter.renterinsight.com/portal/en/kb/renter-insight">Help Center</a>.</p>
+
+<%=render partial: 'resident_mailer/signature', locals: {company: @user.company} %>

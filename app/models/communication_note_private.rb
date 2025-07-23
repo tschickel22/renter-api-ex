@@ -1,0 +1,3 @@
+class CommunicationNotePrivate < Communication
+  
+end

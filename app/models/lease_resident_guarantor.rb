@@ -1,0 +1,3 @@
+class LeaseResidentGuarantor < LeaseResident
+
+end

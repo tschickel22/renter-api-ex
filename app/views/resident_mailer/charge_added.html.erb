@@ -1,0 +1,21 @@
+<h1>Renter Insight</h1>
+<h2>Charge for <%=@charge.lease.unit.street_and_unit %></h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>Your property has created a charge for:</p>
+
+<p>
+  <strong>Charge Type:</strong> <%=@charge.charge_type&.name %>
+  <%= ' - ' + @charge.description if !@charge.description.blank?  %><br>
+  <strong>Amount:</strong> <%=number_to_currency(@charge.amount) %><br>
+  <% if @charge.due_on.present? %>
+    <strong>Due On:</strong> <%=@charge.due_on.strftime('%m/%d/%Y') %>
+  <% end %>
+</p>
+
+<p>If you are enrolled in Auto Pay, this charge will be included with your scheduled amount due.</p>
+
+<%=link_to(raw("<span>View &amp; Pay</span>"), "#{ApplicationMailer.base_url}/portal/leases/#{@charge.lease.hash_id}/ledger",  class: "btn btn-red") %><br/>
+
+<%=render partial: 'signature', locals: {property: @charge.property} %>

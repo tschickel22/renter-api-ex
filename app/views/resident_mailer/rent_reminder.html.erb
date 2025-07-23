@@ -1,0 +1,18 @@
+<h1>Renter Insight</h1>
+<h2>Rent Due Reminder for <%=@lease.unit.street_and_unit %></h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>This is a friendly reminder that your rent is due on the 1st of each month.</p>
+
+<% if !@lease_resident.are_recurring_payments_active? %>
+  <p>If you are on auto pay, you are all set.</p>
+<% end %>
+
+<p>To view your charge details and make a payment, please access the Resident Portal:</p>
+
+<%=link_to(raw("<span>View &amp; Pay</span>"), "#{ApplicationMailer.base_url}/portal/leases/#{@lease.hash_id}/ledger",  class: "btn btn-red") %><br/>
+
+<p>Please let us know if you have any questions.</p>
+
+<%=render partial: 'signature', locals: {property: @lease.property} %>

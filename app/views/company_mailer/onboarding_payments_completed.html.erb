@@ -1,0 +1,12 @@
+<h1>Renter Insight</h1>
+<h2>Electronic Payments Activated</h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p>Your account is now active to receive electronic payments.  Please <a href="<%=ApplicationMailer.base_url %>/onboarding/payments/property_bank_accounts">click here</a> to assign your bank accounts to your company and properties.</p>
+
+<%=link_to(raw("<span>Assign Accounts</span>"), "#{ApplicationMailer.base_url}/onboarding/payments/property_bank_accounts",  class: "btn btn-red") %><br/>
+
+<p>Thank you,<br>
+Renter Insight<br>
+<a href="mailto:support@renterinsight.com">support@renterinsight.com</a></p>

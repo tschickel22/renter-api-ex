@@ -1,0 +1,13 @@
+<div class="form-row">
+  <%= render partial: 'form_item', locals: {label:"First Name", value: lease_resident.resident.first_name} %>
+  <%= render partial: 'form_item', locals: {label:"Middle Name", value: lease_resident.resident.middle_name} %>
+  <%= render partial: 'form_item', locals: {label:"Last Name", value: lease_resident.resident.last_name} %>
+  <%= render partial: 'form_item', locals: {label:"Suffix", value: lease_resident.resident.suffix} %>
+</div>
+
+<% if !residentType.include?('minor') %>
+  <div class="form-row">
+    <%= render partial: 'form_item', locals: {label:"Email", value: lease_resident.resident.email} %>
+    <%= render partial: 'form_item', locals: {label:"Phone", value: lease_resident.resident.phone_number} %>
+  </div>
+<% end %>

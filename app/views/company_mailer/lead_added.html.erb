@@ -1,0 +1,26 @@
+<h1>Renter Insight</h1>
+<h2>New Lead</h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p>You have a new Lead for <%=@lease.property.name %>. Here is their information:</p>
+
+<p>
+
+  <strong>Applicant Name:</strong> <%=@resident.full_name %><br/>
+  <strong>Applicant Email:</strong> <%=@resident.email %><br/>
+  <strong>Applicant Cell Phone:</strong> <%=@resident.phone_number %><br/>
+  <strong>Text Back:</strong> <%=@lease_resident.lead_info.reply_via_text ? "Yes" : "No" %><br/>
+  <strong>Desired Floor Unit/Plan:</strong> <%=@lease_resident.lead_info.unit_listing&.name %><br/>
+  <% if @lease_resident.lead_info.move_in_on.present? %>
+    <strong>Desired Move-in:</strong> <%=@lease_resident.lead_info.move_in_on.strftime('%m/%d/%Y') %><br/>
+  <% end %>
+  <% if !@lease_resident.lead_info.comment.blank? %>
+    <strong>Applicant Message:</strong> <%=@lease_resident.lead_info.comment %><br/>
+  <% end %>
+</p>
+
+<%=link_to(raw("<span>View Lead</span>"), "#{ApplicationMailer.base_url}/leases/#{@lease.hash_id}",  class: "btn btn-red") %><br/>
+
+<p>Thank you,<br>
+Renter Insight</p>

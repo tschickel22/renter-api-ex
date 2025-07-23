@@ -1,0 +1,3 @@
+class LeaseResidentMinor < LeaseResident
+
+end

@@ -1,0 +1,4 @@
+class MoveInChecklistItem < Item
+
+end
+

@@ -1,0 +1,15 @@
+<h1>Renter Insight</h1>
+<h2>Screening Complete</h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p>The screening results for <%=@resident.full_name %> are complete.</p>
+
+<p>Transaction #: <%=@lease_resident.screening_request&.external_screening_id %><br/>
+Date Application Sent: <%=@lease_resident.invitation_sent_at_pretty %><br/>
+Date Completed: <%=@lease_resident.application_completed_at_pretty %></p>
+
+<%=link_to(raw("<span>View Results</span>"), "#{ApplicationMailer.base_url}/leases/#{@lease.hash_id}",  class: "btn btn-red") %><br/>
+
+<p>Thank you,<br>
+Renter Insight</p>

@@ -1,0 +1,68 @@
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QYF04TKSV1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QYF04TKSV1');
+</script>
+
+<!-- ZOHO Website Tracking Code-->
+<script>var w=window;var p = w.location.protocol;if(p.indexOf("http") < 0){p = "http"+":";}var d = document;var f = d.getElementsByTagName('script')[0],s = d.createElement('script');s.type = 'text/javascript'; s.async = false; if (s.readyState){s.onreadystatechange = function(){if (s.readyState=="loaded"||s.readyState == "complete"){s.onreadystatechange = null;try{loadwaprops("3z42cf6013a26b9610818cf1c1294ec696","3ze606f3747873186df741779d14c3c2e8","3zcee12a336da9f2ad1a69b1cf448f607120c58e0f9de0f3b5bc6beff4aa5a357c","3z0cda067721d3f8fd4a15941e3ce5e0c6194b6136b682dcafa1dcd78cfd8ff3bb","0.0");}catch(e){}}};}else {s.onload = function(){try{loadwaprops("3z42cf6013a26b9610818cf1c1294ec696","3ze606f3747873186df741779d14c3c2e8","3zcee12a336da9f2ad1a69b1cf448f607120c58e0f9de0f3b5bc6beff4aa5a357c","3z0cda067721d3f8fd4a15941e3ce5e0c6194b6136b682dcafa1dcd78cfd8ff3bb","0.0");}catch(e){}};};s.src =p+"//ma.zoho.com/hub/js/WebsiteAutomation.js";f.parentNode.insertBefore(s, f);</script>
+
+<!-- ZOHO PageSense Tracking Code -->
+<script src="https://cdn.pagesense.io/js/renterinsight/04e5fce9cb9446ea9685ee9d04bcfd23.js"></script>
+
+<!-- Pendo -->
+<script>
+    (function(apiKey){
+        (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=o._q||[];
+            v=['initialize','identify','updateOptions','pageLoad','track'];for(w=0,x=v.length;w<x;++w)(function(m){
+                o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
+            y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
+            z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
+    })('e538a16e-1391-4ac3-5a47-e97ae3f67239');
+</script>
+
+<% if !request.url.include?("available-to-rent") && !request.url.include?("property-listings") %>
+  <!-- Zoho SalesIQ -->
+  <script type="text/javascript" id="zsiqchat">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode: "9c643ec58a771353493f226991a3e51296c4d423e8892c9c3743ee968ff30e00d8ecb3666949baf8397334234eab4ff9", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);</script>
+<% end %>
+
+<!-- Zoho CRM -->
+<script type="text/javascript" src="https://crm.zoho.com/crm/javascript/zcga.js"> </script>
+
+<!-- Impact -->
+<script type="text/javascript">
+    (function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]=e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('https://utt.impactcdn.com/A4354470-b31b-4f72-b0e5-da822e6325341.js','script','ire',document,window);
+</script>
+<script type="text/javascript">
+    ire('identify', {customerId: '<%= RenterInsightImpactApi.generate_customer_id(current_actual_user) %>', customerEmail: '<%= RenterInsightImpactApi.generate_customer_email_hash(current_actual_user) %>'});
+</script>
+
+<!-- Microsoft -->
+<script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"187121076", enableAutoSpaTracking: true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+
+<!-- Meta Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '584468060191630');
+    fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+               src="https://www.facebook.com/tr?id=584468060191630&ev=PageView&noscript=1"
+    /></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-PK75WK82
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->

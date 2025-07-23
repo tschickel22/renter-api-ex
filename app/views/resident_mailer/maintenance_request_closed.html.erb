@@ -1,0 +1,10 @@
+<h1>Renter Insight</h1>
+<h2>Ticket Closed</h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>The ticket for <strong><%=@maintenance_request.title %></strong> has been closed.</p>
+
+<p>If you have any questions, you can respond to this email, or reply in the <a href="<%=SystemMailer.base_url %>/maintenance_requests/<%=@maintenance_request.hash_id %>/edit">Renter Insight Portal</a></p>
+
+<%=render partial: 'signature', locals: {property: @maintenance_request.property} %>

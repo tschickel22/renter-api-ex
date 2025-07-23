@@ -1,0 +1,15 @@
+<h1>Renter Insight</h1>
+<h2>Requesting Portal Access</h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p>Your future resident <%=@resident.full_name %> would like access to the resident portal where they can purchase renters insurance, set up rent payments, communicate with you and more.  Please set the move-in date which will provide your applicant with access.</p>
+
+<p>Please set the move-in date which will provide your applicant with access.</p>
+
+<%=link_to(raw("<span>Set Move-In Date</span>"), "#{ApplicationMailer.base_url}/leases/#{@lease.hash_id}/edit",  class: "btn btn-red") %><br/>
+
+<p>Once you set the date, we will notify your applicant they have portal access.</p>
+
+<p>Thank you,<br>
+Renter Insight</p>

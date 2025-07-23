@@ -1,0 +1,11 @@
+<h1>Renter Insight</h1>
+<h2>Vendor Completed Work</h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p><%=@vendor.name %> has completed this maintenance request.  If you are satisfied, please close this ticket using the below button and we will notify the resident the work is complete.  If this isn’t related to a resident ticket, no notification will be sent.</p>
+
+<%=render partial: 'company_mailer/maintenance_request_info' %>
+
+<p>Thank you,<br>
+Renter Insight</p>

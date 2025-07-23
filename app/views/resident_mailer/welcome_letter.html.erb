@@ -1,0 +1,19 @@
+<h1>Renter Insight</h1>
+<h2>Congratulations on your new home at <%=@lease.unit.street_and_unit %></h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>We want to welcome you to your new home at <%=@lease.unit.street_and_unit %>.</p>
+<p>Please use the below link to access our resident portal where you can pay your move-in charges, send us communications, complete maintenance work orders and more.</p>
+
+<p>
+  <strong>Charge Type:</strong> Move-In<br>
+  <strong>Security Deposit Amount:</strong> <%=number_to_currency(@lease.security_deposit) %><br>
+  <strong>Total Amount:</strong> <%=number_to_currency(@lease.ledger_balance) %><br>
+  <strong>Due On:</strong> <%=@lease.lease_start_on.strftime('%m/%d/%Y') %><br>
+  Security Deposit is due prior to lease signing
+</p>
+
+<%=link_to(raw("<span>View &amp; Pay</span>"), "#{ApplicationMailer.base_url}/portal/leases/#{@lease.hash_id}/payments/#{@lease_resident.hash_id}/one_time",  class: "btn btn-red") %><br/>
+
+<%=render partial: 'signature', locals: {property: @lease.property} %>

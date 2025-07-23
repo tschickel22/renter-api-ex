@@ -1,0 +1,10 @@
+<h1>Renter Insight</h1>
+<h2>Maintenance Request Assigned</h2>
+
+<p>Dear <%=@resident.first_name %>,</p>
+
+<p>Your maintenance ticket has been updated, see below details:</p>
+
+<%=render partial: 'company_mailer/maintenance_request_info', locals: {hide_buttons: true, hide_qr_code: true} %>
+
+<%=render partial: 'resident_mailer/signature', locals: {property: @maintenance_request.property} %>

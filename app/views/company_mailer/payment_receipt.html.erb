@@ -1,0 +1,20 @@
+<h1>Renter Insight</h1>
+<h2><%="#{number_to_currency(@payment.amount)} Received at #{@payment.lease.property.name}" %></h2>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p>You have a received a new payment.  Please allow 3 business days for the funds to be deposited to your account.</p>
+
+<p>
+  <strong>Property:</strong> <%=@payment.lease.property.name %><br>
+  <strong>From:</strong> <%=@payment.resident_full_name %><br>
+  <strong>Receipt ID:</strong> <%=@payment.hash_id %><br>
+  <strong>Payment Date:</strong> <%=@payment.payment_at_pretty %><br>
+  <strong>Paid By:</strong> <%=@payment.payment_method.method_and_last_four %><br>
+  <strong>Amount:</strong> <%=number_to_currency(@payment.amount) %><br>
+  <strong>Payment Processing Fee:</strong> <%=number_to_currency(@payment.fee) %>
+</p>
+
+<p>Thank you,<br>
+Renter Insight<br>
+<a href="mailto:support@renterinsight.com">support@renterinsight.com</a></p>

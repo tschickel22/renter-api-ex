@@ -1,0 +1,3 @@
+class LeaseResidentOccupant < LeaseResident
+
+end

@@ -1,0 +1,3 @@
+class LeaseResidentPrimary < LeaseResident
+
+end

@@ -1,0 +1,12 @@
+<h1>Renter Insight</h1>
+
+<p>Dear <%=@user.first_name %>,</p>
+
+<p>You have a new message <%="from " + @communication.from.name if @communication.from.present? %>:</p>
+
+<p><strong><%=raw(@communication.body.gsub("\n", "<br>")) %></strong></p>
+
+<p>You can respond to this email, or reply in the <a href="<%=SystemMailer.base_url %>/communications/#comment-<%=@communication.hash_id %>">Renter Insight Portal</a></p>
+
+<p>Thank you,<br>
+  Renter Insight</p>
